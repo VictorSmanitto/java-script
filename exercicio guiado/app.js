@@ -19,3 +19,26 @@ btnToggleInfo.addEventListener('click', () => {
     (infoCorpo.style.display = 'none', btnToggleInfo.textContent = 'Mostrar'):
     (infoCorpo.style.display = 'block', btnToggleInfo.textContent = 'Ocultar');
 })
+
+const btnAumentarJs = document.querySelector('#btn-aumentar-js');
+const barraJs       = document.querySelector('#barra-js');
+const nivelJs       = document.querySelector('#nivel-js');
+
+btnAumentarJs.addEventListener('click', () => {
+
+    const nivelAtual = parseInt(nivelJs.textContent);
+
+    if (nivelAtual >= 100){
+        btnAumentarJs.textContent = 'Javascript Dominado';
+        btnAumentarJs.disabled = 'true';
+        return;
+    }
+
+    const novoNivel = Math.min(nivelAtual + 10, 100);
+
+    nivelJs.textContent = novoNivel + '%';
+
+    barraJs.style.width = novoNivel + '%';
+
+})
+
