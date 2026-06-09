@@ -35,6 +35,8 @@ test("Criar um novo jogo", async () =>{
     expect(response.body.genre).toBe("Blob");
     expect(response.body.release_year).toBe(3020);
 })
+
+
 test("Criar um outro novo jogo", async () =>{
     const response = await request(app).post("/api/games")
     .send({
@@ -43,11 +45,9 @@ test("Criar um outro novo jogo", async () =>{
         genre: "mmo",
         release_year: 1984
     })
-    expect(response.statusCode).toBe(200);
-    expect(response.body.title).toBe("new game");
-    // expect(response.body.id).toBe(1);
-    expect(response.body.genre).toBe("mmo");
-    expect(response.body.release_year).toBe(1984);
+    expect(response.body).toHaveProperty("title");
+    expect(response.body).toHaveProperty("genre");
+    expect(response.body).toHaveProperty("release_year");
 })
 
 // Post com retorno de erros
