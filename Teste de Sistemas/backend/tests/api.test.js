@@ -8,10 +8,18 @@ const app = require("../app");
 // })
 
 // questão 2
-test("Listar array de jogos", async () =>{
-    const response = await request(app).get("/api/games");
-    expect(Array.isArray(response.body)).toBe(true);
-    expect(response.body.length).toBeGreaterThan(0);
+// test("Listar array de jogos", async () =>{
+//     const response = await request(app).get("/api/games");
+//     expect(Array.isArray(response.body)).toBe(true);
+//     expect(response.body.length).toBeGreaterThan(0);
+// })
+
+
+// ex 4 ver jogo vazio
+test("Criar um outro novo jogo", async () =>{
+   const response = await request(app).post("/api/games")
+        .send({})
+    expect(response.statusCode).toBe(500);
 })
 
 
@@ -21,24 +29,6 @@ test("Listar array de jogos", async () =>{
 
 
 
-
-
-
-
-// // GET do site
-
-// const Test = require("supertest/lib/test");
-// test("Listar jogos mostrando apenas o codigo 200", async () =>{
-//     const response = await request(app).get("/api/games");
-//     expect(response.statusCode).toBe(200);
-// })
-
-
-// test("Retornando se é uma lista de jogos", async () => {
-//     const response = await request(app).get("/api/games");
-//     expect(Array.isArray(response.body)).toBe(true);
-//     expect(response.body.length).toBeGreaterThan(0);
-// })
 
 
 // //Post do site
