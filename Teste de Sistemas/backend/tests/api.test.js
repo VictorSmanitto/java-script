@@ -15,6 +15,25 @@ const app = require("../app");
 // })
 
 
+//questão 3:
+
+ test("Criar um novo jogo", async () =>{
+     const response = await request(app).post("/api/games")
+     .send({
+         id: 6,
+         title: "sixSeven",
+         genre: "numero",
+         release_year: 6767
+     })
+    
+    expect(response.statusCode).toBe(200);
+    expect(response.body.title).toBe("sixSeven");
+    expect(response.body.id).toBe(9);
+    expect(response.body.genre).toBe("numero");
+    expect(response.body.release_year).toBe(6767);
+ })
+
+
 // ex 4 ver jogo vazio
 test("Criar um outro novo jogo", async () =>{
    const response = await request(app).post("/api/games")
