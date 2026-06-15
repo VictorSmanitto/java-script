@@ -7,6 +7,11 @@ const app = require("../app");
 //     expect(response.statusCode).toBe(200);
 // })
 
+// questão 2
+test("Listar array de jogos", async () =>{
+    const response = await response(app).get("/api/games");
+    
+})
 
 
 
