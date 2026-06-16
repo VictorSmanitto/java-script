@@ -16,35 +16,59 @@ const app = require("../app");
 
 
 //questão 3:
-
- test("Criar um novo jogo", async () =>{
-     const response = await request(app).post("/api/games")
-     .send({
-         id: 6,
-         title: "sixSeven",
-         genre: "numero",
-         release_year: 6767
-     })
+//  test("Criar um novo jogo", async () =>{
+//      const response = await request(app).post("/api/games")
+//      .send({
+//          id: 6,
+//          title: "sixSeven",
+//          genre: "numero",
+//          release_year: 6767
+//      })
     
-    expect(response.statusCode).toBe(200);
-    expect(response.body.title).toBe("sixSeven");
-    expect(response.body.id).toBe(9);
-    expect(response.body.genre).toBe("numero");
-    expect(response.body.release_year).toBe(6767);
- })
+//     expect(response.statusCode).toBe(200);
+//     expect(response.body.title).toBe("sixSeven");
+//     expect(response.body.id).toBe(9);
+//     expect(response.body.genre).toBe("numero");
+//     expect(response.body.release_year).toBe(6767);
+//  })
 
 
-// ex 4 ver jogo vazio
-test("Criar um outro novo jogo", async () =>{
-   const response = await request(app).post("/api/games")
-        .send({})
-    expect(response.statusCode).toBe(500);
+// // ex 4 ver jogo vazio
+// test("Criar um outro novo jogo", async () =>{
+//    const response = await request(app).post("/api/games")
+//         .send({})
+//     expect(response.statusCode).toBe(500);
+// })
+
+test("Criar um novo jogo", async () =>{ 
+
+    const response = await request(app).post("/api/games")
+        .send({
+            id: 10,
+            title: "sixSeven",
+            genre: "numero",
+            release_year: 6767
+        })
+
+     expect(response.statusCode).toBe(200);
+     
+    const response2 = await request(app).get(`/api/games/${response.body.id}`);
+    expect(response2.body.id).toBe(response.body.id);
+    expect(response2.statusCode).toBe(200);
+
+    const  remove = await request(app).delete(`/api/games/${response.body.id}`);
+    expect(remove.body.id).toBe(response.body.id);
+
+    const response3 = await request(app).get(`/api/games/${response.body.id}`);
+    expect(response3.body.id).toBe(response.body.id);
+    expect(response3.statusCode).toBe(400);
+
+
 })
 
 
 
-
-
+// ex 6 desafio mega fodido
 
 
 
@@ -63,7 +87,7 @@ test("Criar um outro novo jogo", async () =>{
     
 //     expect(response.statusCode).toBe(200);
 //     expect(response.body.title).toBe("monster");
-//     // expect(response.body.id).toBe(1);
+//     expect(response.body.id).toBe(1);
 //     expect(response.body.genre).toBe("Blob");
 //     expect(response.body.release_year).toBe(3020);
 // })
