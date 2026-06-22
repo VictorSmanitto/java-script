@@ -1,44 +1,43 @@
 const request = require("supertest");
 const app = require("../app");
 
-// questão 1
-// test("Listar jogos", async () =>{
-//     const response = await request(app).get("/api/games");
-//     expect(response.statusCode).toBe(200);
-// })
-
-// questão 2
-// test("Listar array de jogos", async () =>{
-//     const response = await request(app).get("/api/games");
-//     expect(Array.isArray(response.body)).toBe(true);
-//     expect(response.body.length).toBeGreaterThan(0);
-// })
+ //questão 1
+ test("Listar jogos", async () =>{
+     const response = await request(app).get("/api/games");
+     expect(response.statusCode).toBe(200);
+ })
+ //questão 2
+ test("Listar array de jogos", async () =>{
+     const response = await request(app).get("/api/games");
+     expect(Array.isArray(response.body)).toBe(true);
+     expect(response.body.length).toBeGreaterThan(0);
+ })
 
 
 //questão 3:
-//  test("Criar um novo jogo", async () =>{
-//      const response = await request(app).post("/api/games")
-//      .send({
-//          id: 6,
-//          title: "sixSeven",
-//          genre: "numero",
-//          release_year: 6767
-//      })
-    
-//     expect(response.statusCode).toBe(200);
-//     expect(response.body.title).toBe("sixSeven");
-//     expect(response.body.id).toBe(9);
-//     expect(response.body.genre).toBe("numero");
-//     expect(response.body.release_year).toBe(6767);
-//  })
+  test("Criar um novo jogo", async () =>{
+      const response = await request(app).post("/api/games")
+      .send({
+          id: 6,
+          title: "sixSeven",
+          genre: "numero",
+          release_year: 6767
+      })
+  
+     expect(response.statusCode).toBe(200);
+     expect(response.body.title).toBe("sixSeven");
+     expect(response.body.id).toBe(9);
+     expect(response.body.genre).toBe("numero");
+     expect(response.body.release_year).toBe(6767);
+  })
 
 
-// // ex 4 ver jogo vazio
-// test("Criar um outro novo jogo", async () =>{
-//    const response = await request(app).post("/api/games")
-//         .send({})
-//     expect(response.statusCode).toBe(500);
-// })
+ // ex 4 ver jogo vazio
+ test("Criar um outro novo jogo", async () =>{
+    const response = await request(app).post("/api/games")
+         .send({})
+     expect(response.statusCode).toBe(500);
+ })
 
 
 // ex 6
